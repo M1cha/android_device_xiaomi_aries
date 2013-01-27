@@ -15,5 +15,5 @@
 #
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-TARGET_PREBUILT_KERNEL := device/lge/mako-kernel/kernel
+TARGET_PREBUILT_KERNEL := device/xiaomi/aries/kernel
 endif
