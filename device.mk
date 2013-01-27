@@ -42,6 +42,11 @@ PRODUCT_PACKAGES += \
         VisualizationWallpapers \
         librs_jni
 
+LOCAL_KERNEL := device/lge/mako-kernel/kernel
+
+PRODUCT_COPY_FILES := \
+	$(LOCAL_KERNEL):kernel
+
 PRODUCT_COPY_FILES += \
 	device/xiaomi/aries/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
 	device/xiaomi/aries/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
