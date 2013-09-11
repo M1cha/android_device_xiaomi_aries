@@ -74,6 +74,8 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt kl and kcm keymaps
 PRODUCT_COPY_FILES += \
+	device/xiaomi/aries/atmel_mxt_ts.kl:system/usr/keylayout/atmel_mxt_ts.kl \
+	device/xiaomi/aries/sensor00fn1a.kl:system/usr/keylayout/sensor00fn1a.kl \
 	device/xiaomi/aries/apq8064-tabla-snd-card_Button_Jack.kl:system/usr/keylayout/apq8064-tabla-snd-card_Button_Jack.kl \
 	device/xiaomi/aries/hs_detect.kl:system/usr/keylayout/hs_detect.kl \
 	device/xiaomi/aries/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
@@ -82,10 +84,6 @@ PRODUCT_COPY_FILES += \
 	device/xiaomi/aries/hs_detect.kcm:system/usr/keychars/hs_detect.kcm \
 	device/xiaomi/aries/keypad_8064.kcm:system/usr/keychars/keypad_8064.kcm \
 	device/xiaomi/aries/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm
-
-# Prebuilt input device calibration files
-PRODUCT_COPY_FILES += \
-	device/xiaomi/aries/touch_dev.idc:system/usr/idc/touch_dev.idc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
