@@ -174,7 +174,8 @@ PRODUCT_PACKAGES += \
 	power.msm8960
 
 PRODUCT_COPY_FILES += \
-	device/xiaomi/aries/init.aries.bt.sh:system/etc/init.aries.bt.sh
+	device/xiaomi/aries/init.aries.bt.sh:system/etc/init.aries.bt.sh \
+	device/xiaomi/aries/init.aries.fm.sh:system/etc/init.aries.fm.sh
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.qualcomm.bt.hci_transport=smd
@@ -232,6 +233,17 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	syspart_select
+
+# fmradio support
+PRODUCT_PACKAGES += \
+    qcom.fmradio \
+    libqcomfm_jni \
+    FM2 \
+    FMRecord
+
+# transmitter isn't supported
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.fm.transmitter=false
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so

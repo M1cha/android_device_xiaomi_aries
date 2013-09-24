@@ -46,3 +46,4 @@
 /dev/audience_es310       0660   system     audio
 /dev/wcnss_ctrl           0660   system     system
 /dev/wcnss_wlan           0660   system     system
+/dev/radio0               0644   system     system
