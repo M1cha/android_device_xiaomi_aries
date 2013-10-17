@@ -582,7 +582,7 @@ static struct country_map country_numeric[] = {
     { 546, CAMERA_ANTIBANDING_50HZ }, // New Caledonia
     { 548, CAMERA_ANTIBANDING_50HZ }, // Cook Islands
     { 602, CAMERA_ANTIBANDING_50HZ }, // Egypt
-    { 603, CAMERA_ANTIBANDING_50HZ }, // Axiaomiria
+    { 603, CAMERA_ANTIBANDING_50HZ }, // Algeria
     { 604, CAMERA_ANTIBANDING_50HZ }, // Morocco
     { 605, CAMERA_ANTIBANDING_50HZ }, // Tunisia
     { 606, CAMERA_ANTIBANDING_50HZ }, // Libya
