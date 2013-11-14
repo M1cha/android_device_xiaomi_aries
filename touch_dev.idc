@@ -13,7 +13,7 @@
 # limitations under the License.
 
 #
-# Input Device Calibration File for the Mako touch screen.
+# Input Device Calibration File for the Aries touch screen.
 #
 
 device.internal = 1

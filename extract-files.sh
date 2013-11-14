@@ -2,8 +2,8 @@
 
 set -e
 
-VENDOR=lge
-DEVICE=mako
+VENDOR=xiaomi
+DEVICE=aries
 
 if [ $# -eq 0 ]; then
   SRC=adb

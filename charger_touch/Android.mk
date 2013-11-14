@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-ifneq ($(filter mako occam,$(TARGET_DEVICE)),)
+ifneq ($(filter aries aries,$(TARGET_DEVICE)),)
 
 LOCAL_PATH:= $(call my-dir)
 
@@ -24,7 +24,7 @@ LOCAL_SHARED_LIBRARIES := libcutils liblog libhardware_legacy
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_PATH := $(TARGET_OUT)/bin
 LOCAL_MODULE := charger_touch
-LOCAL_MODULE_OWNER := lge
+LOCAL_MODULE_OWNER := xiaomi
 include $(BUILD_EXECUTABLE)
 
 endif

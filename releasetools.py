@@ -95,7 +95,7 @@ def WriteRadio(info, radio_img):
       'package_extract_file("radio.img", "%s");' % (device,))
 
 
-# /* mako bootloader.img format */
+# /* aries bootloader.img format */
 #
 # #define BOOTLDR_MAGIC "BOOTLDR!"
 # #define BOOTLDR_MAGIC_SIZE 8

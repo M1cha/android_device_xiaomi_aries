@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-ifneq ($(filter mako occam,$(TARGET_DEVICE)),)
+ifneq ($(filter aries aries,$(TARGET_DEVICE)),)
 
 LOCAL_PATH:= $(call my-dir)
 
@@ -25,7 +25,7 @@ LOCAL_C_INCLUDES := \
 	$(TARGET_OUT_HEADERS)/common/inc
 LOCAL_SHARED_LIBRARIES := libcutils liblog
 LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_OWNER := lge
+LOCAL_MODULE_OWNER := xiaomi
 LOCAL_MODULE := bdAddrLoader
 include $(BUILD_EXECUTABLE)
 

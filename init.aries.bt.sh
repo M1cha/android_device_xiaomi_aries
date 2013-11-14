@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 BLUETOOTH_SLEEP_PATH=/proc/bluetooth/sleep/proto
-LOG_TAG="mako-bluetooth"
+LOG_TAG="aries-bluetooth"
 LOG_NAME="${0}:"
 
 loge ()

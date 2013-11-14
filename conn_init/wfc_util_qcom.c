@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#ifdef CONFIG_LGE_WLAN_QCOM_PATCH
+#ifdef CONFIG_XIAOMI_WLAN_QCOM_PATCH
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -672,5 +672,5 @@ int wfc_util_qcom_checkt_roaming_off(void)
 	return 0;
 }
 
-#endif /* CONFIG_LGE_WLAN_QCOM_PATCH */
+#endif /* CONFIG_XIAOMI_WLAN_QCOM_PATCH */
 
