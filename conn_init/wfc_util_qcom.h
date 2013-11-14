@@ -17,7 +17,7 @@
 #ifndef __WFC_UTIL_QCOM_H__
 #define __WFC_UTIL_QCOM_H__
 
-#ifdef CONFIG_LGE_WLAN_QCOM_PATCH
+#ifdef CONFIG_XIAOMI_WLAN_QCOM_PATCH
 /*
  * wfc_util_qcom_check_config
  *
@@ -47,6 +47,6 @@ extern void wfc_util_qcom_reset_mac(void);
 extern int wfc_util_qcom_ota_enable(void);
 extern int wfc_util_qcom_ota_disable(void);
 extern int wfc_util_qcom_checkt_roaming_off(void);
-#endif /* CONFIG_LGE_WLAN_QCOM_PATCH */
+#endif /* CONFIG_XIAOMI_WLAN_QCOM_PATCH */
 #endif
 

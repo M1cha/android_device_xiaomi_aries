@@ -14,9 +14,9 @@
 # limitations under the License.
 #
 
-import init.mako.usb.rc
-import init.mako_svelte.rc
-import init.mako_tiny.rc
+import init.aries.usb.rc
+import init.aries_svelte.rc
+import init.aries_tiny.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -50,7 +50,7 @@ on init
     setprop persist.radio.custom_ecc_hard "911,*911,#911,112,999,000,08,118,120,122,110,119,995,111,113,125,127,133"
 
 on fs
-    mount_all ./fstab.mako
+    mount_all ./fstab.aries
     restorecon_recursive /persist
     setprop ro.crypto.fuse_sdcard true
 
@@ -320,7 +320,7 @@ service rmt_storage /system/bin/rmt_storage
     user root
     group system
 
-service hciattach /system/bin/sh /system/etc/init.mako.bt.sh
+service hciattach /system/bin/sh /system/etc/init.aries.bt.sh
     class late_start
     user bluetooth
     group qcom_oncrpc bluetooth net_bt_admin system
@@ -445,7 +445,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input
 
-service wcnss_init /system/bin/sh /system/etc/init.mako.wifi.sh
+service wcnss_init /system/bin/sh /system/etc/init.aries.wifi.sh
     class main
     user system
     group system wifi

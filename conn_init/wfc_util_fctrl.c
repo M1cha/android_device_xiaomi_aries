@@ -639,22 +639,22 @@ int wfc_util_ffile_check_copy(char *pDestFName, char *pSourceFName, mode_t mode,
 
 	/* remove this code because of permission problem when it is accessed from "atd" having system permission. */
 	{
-	#ifndef CONFIG_LGE_WLAN_WIFI_PATCH
+	#ifndef CONFIG_XIAOMI_WLAN_WIFI_PATCH
 	uid_t uid = getuid();
 	gid_t gid = getgid();
 	wfc_util_log_error("Error changing group ownership (%d) of %s to %d: %s", gid, pDestFName, gID, strerror(errno));
 	if (0 == uid) {
-	#endif /* CONFIG_LGE_WLAN_WIFI_PATCH */
+	#endif /* CONFIG_XIAOMI_WLAN_WIFI_PATCH */
 		if (chown(pDestFName, uID, gID) < 0) {
 			wfc_util_log_error("Error changing group ownership of %s to %d: %s", pDestFName, gID, strerror(errno));
 			unlink(pDestFName);
 			return -1;
 		}
-	#ifndef CONFIG_LGE_WLAN_WIFI_PATCH
+	#ifndef CONFIG_XIAOMI_WLAN_WIFI_PATCH
 	} else {
 		wfc_util_log_error("wfc_util_ffile_check_copy : we can not excute chown[uid = %d, gid = %d]", uid, getgid());
 	}
-	#endif /* CONFIG_LGE_WLAN_WIFI_PATCH */
+	#endif /* CONFIG_XIAOMI_WLAN_WIFI_PATCH */
 	}
 
 	return 0;

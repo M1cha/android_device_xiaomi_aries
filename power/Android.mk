@@ -17,8 +17,8 @@ LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_SRC_FILES := power_mako.c
+LOCAL_SRC_FILES := power_aries.c
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE := power.mako
+LOCAL_MODULE := power.aries
 include $(BUILD_SHARED_LIBRARY)

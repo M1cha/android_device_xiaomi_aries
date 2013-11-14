@@ -19,7 +19,7 @@ LOCAL_C_INCLUDES := frameworks/native/cmds/dumpstate
 
 LOCAL_SRC_FILES := dumpstate.c
 
-LOCAL_MODULE := libdumpstate.mako
+LOCAL_MODULE := libdumpstate.aries
 
 LOCAL_MODULE_TAGS := optional
 
