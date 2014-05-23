@@ -34,7 +34,8 @@ logi "DUTADDR : $DUTADDR"
 #load bd addr
 if [$DUTADDR == ""]
 then
-BDADDR=`/system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -x`
+/system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -x
+BDADDR=`getprop persist.service.bdroid.bdaddr`
 else
 BDADDR=`/system/bin/bdAddrLoader -p net.btdut.address -s -x`
 fi
@@ -55,7 +56,7 @@ case $POWER_CLASS in
      logi "Power Class: To override, Before turning BT ON; setprop qcom.bt.dev_power_class <1 or 2 or 3>";;
 esac
 
-if [$BDADDR == ""]
+if [ "$BDADDR" == "" ]
 then
 /system/bin/hci_qcomm_init -e $PWR_CLASS -vv
 else

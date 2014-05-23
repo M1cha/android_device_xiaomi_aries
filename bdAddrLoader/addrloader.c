@@ -72,6 +72,8 @@ typedef enum _res
     FAIL
 }Res;
 
+extern int qmi_nv_read_bd_addr(unsigned char** mac);
+
 int hexa_to_ascii(const unsigned char* hexa, char* ascii, int nHexLen)
 {
     int i, j;
@@ -92,22 +94,14 @@ int hexa_to_ascii(const unsigned char* hexa, char* ascii, int nHexLen)
 
 int readBDAddrData(const char* szFilePath, unsigned char* addrData, int nDataLen)
 {
-    int nFd, nRdCnt;
+    unsigned char *mac = NULL;
+    int i;
 
-    nFd = open(szFilePath, O_RDONLY);
+    qmi_nv_read_bd_addr(&mac);
 
-    if(nFd < 0){
-        ALOGW("There is no Address File in FTM area : %s\n", szFilePath);
-        return FAIL;
-    }
+    for(i=0; i<nDataLen; i++)
+        addrData[nDataLen-1-i] = mac[i];
 
-    nRdCnt = read(nFd, addrData, nDataLen);
-    if(nRdCnt != nDataLen){
-        ALOGE("Fail to read Address data from FTM area\n");
-        close(nFd);
-        return FAIL;
-    }
-    close(nFd);
     return SUCCESS;
 }
 
