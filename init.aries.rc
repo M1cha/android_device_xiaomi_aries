@@ -446,11 +446,10 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input
 
-service wcnss_init /system/bin/sh /system/etc/init.aries.wifi.sh
-    class late_start
+service wcnss-service /system/bin/wcnss_service
+    class main
     user system
-    group system wifi
-    seclabel u:r:conn_init:s0
+    group system wifi radio
     oneshot
 
 service bdAddrLoader /system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -x

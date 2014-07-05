@@ -47,10 +47,9 @@ PRODUCT_PACKAGES += \
         librs_jni
 
 PRODUCT_COPY_FILES += \
-	device/xiaomi/aries/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
+	device/xiaomi/aries/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
 	device/xiaomi/aries/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-	device/xiaomi/aries/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
-	device/xiaomi/aries/init.aries.wifi.sh:system/etc/init.aries.wifi.sh
+	device/xiaomi/aries/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_COPY_FILES += \
 	device/xiaomi/aries/audio_policy.conf:system/etc/audio_policy.conf
@@ -215,8 +214,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	bdAddrLoader \
-	libwfcu \
-	conn_init
+	libwcnss_qmi \
+	wcnss_service
 
 PRODUCT_PACKAGES += \
 	keystore.msm8960
