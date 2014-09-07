@@ -1,4 +1,3 @@
-key 257   HEADSETHOOK       WAKE
-key 259   VOLUME_UP         WAKE
-key 260   VOLUME_UP         WAKE
-key 263   VOLUME_DOWN       WAKE
+key 258   VOLUME_DOWN       WAKE
+key 256   HEADSETHOOK       WAKE
+key 257   VOLUME_UP         WAKE
