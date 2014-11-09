@@ -22,6 +22,7 @@ bin/thermald
 bin/usbhub
 bin/usbhub_init
 bin/v4l2-qcamera-app
+etc/DxHDCP.cfg
 etc/firmware/tzapps.b00
 etc/firmware/tzapps.b01
 etc/firmware/tzapps.b02
@@ -33,8 +34,6 @@ etc/firmware/vidc.b02
 etc/firmware/vidc.b03
 etc/firmware/vidc.mdt
 etc/firmware/vidc_1080p.fw
-etc/firmware/wcd9310/wcd9310_anc.bin
-etc/firmware/wcd9310/wcd9310_mbhc.bin
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
@@ -86,6 +85,7 @@ lib/libdsprofile.so
 lib/libdss.so
 lib/libdsucsd.so
 lib/libdsutils.so
+lib/libDxHdcp.so
 lib/libgemini.so
 lib/libgps.utils.so
 vendor/lib/libgsl.so
@@ -171,3 +171,14 @@ vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/libloc_api_v02.so
 vendor/lib/libloc_ds_api.so
+vendor/firmware/discretix/dxhdcp2.b00
+vendor/firmware/discretix/dxhdcp2.b01
+vendor/firmware/discretix/dxhdcp2.b02
+vendor/firmware/discretix/dxhdcp2.b03
+vendor/firmware/discretix/dxhdcp2.mdt
+vendor/lib/libWVphoneAPI.so
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/libwvdrm_L1.so
+vendor/lib/libwvm.so
+vendor/lib/mediadrm/libwvdrmengine.so
