@@ -43,3 +43,5 @@ allow sensors persist_sensors_file:file rw_file_perms;
 wakelock_use(sensors)
 
 allow sensors cgroup:dir { create add_name };
+
+allow sensors self:process execmem;
