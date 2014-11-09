@@ -1,6 +1,6 @@
 [
  {
-   "repository": "android_kernel_google_msm",
-   "target_path": "kernel/google/msm"
+   "repository": "android_kernel_xiaomi_aries",
+   "target_path": "kernel/xiaomi/aries"
  }
 ]
