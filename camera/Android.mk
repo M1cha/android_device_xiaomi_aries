@@ -1,6 +1,6 @@
 LOCAL_PATH:= $(call my-dir)
 
-ifeq ($(TARGET_BOARD_PLATFORM),msm8960)
+ifeq ($(TARGET_BOARD_PLATFORM),msm8960_disabled)
 ifneq ($(USE_CAMERA_STUB),true)
 ifeq ($(USE_DEVICE_SPECIFIC_CAMERA),true)
 

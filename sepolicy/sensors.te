@@ -45,3 +45,4 @@ wakelock_use(sensors)
 allow sensors cgroup:dir { create add_name };
 
 allow sensors self:process execmem;
+allow sensors persist_file:file { read write getattr open };
