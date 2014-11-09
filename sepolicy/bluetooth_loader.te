@@ -27,3 +27,10 @@ allow bluetooth_loader bluetooth_prop:property_service set;
 
 # Allow getprop/setprop for init.aries.bt.sh
 allow bluetooth_loader system_file:file execute_no_trans;
+
+# 4.1 qmux
+allow bluetooth_loader qmux:unix_stream_socket connectto;
+allow bluetooth_loader qmuxd_socket:dir { write add_name };
+allow bluetooth_loader qmuxd_socket:sock_file { write create setattr };
+allow bluetooth_loader self:process execmem;
+allow bluetooth_loader self:socket { read create ioctl };

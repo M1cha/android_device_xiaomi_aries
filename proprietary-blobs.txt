@@ -127,6 +127,7 @@ lib/libqmi_common_so.so
 lib/libqmi_csi.so
 lib/libqmi_csvt_srvc.so
 lib/libqmi_encdec.so
+-lib/libqminvapi.so
 lib/libQSEEComAPI.so
 lib/libril-qc-qmi-1.so
 lib/libril-qcril-hook-oem.so

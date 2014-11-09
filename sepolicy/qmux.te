@@ -14,3 +14,6 @@ allow qmux radio_device:chr_file rw_file_perms;
 
 # wake lock access
 wakelock_use(qmux)
+
+allow qmux self:process execmem;
+allow qmux sysfs:file write;
