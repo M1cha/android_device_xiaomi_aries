@@ -129,10 +129,6 @@ on boot
     #Enable logging of the wake up reasons in the kernel log
     write /sys/module/msm_show_resume_irq/parameters/debug_mask 1
 
-# NFC: create data/nfc for nv storage
-    mkdir /data/nfc 770 nfc nfc
-    mkdir /data/nfc/param 770 nfc nfc
-
 # Assign TCP buffer thresholds to be ceiling value of technology maximums
 # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  1220608
