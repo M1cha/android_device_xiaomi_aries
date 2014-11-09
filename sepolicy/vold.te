@@ -1,0 +1,2 @@
+# for ext4 sdcard
+allow vold vfat:filesystem relabelto;
