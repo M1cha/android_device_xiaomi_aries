@@ -1,8 +1,6 @@
 root/adb_keys:google
 system/bin/ATFWD-daemon:qcom
 system/etc/DxHDCP.cfg:xiaomi
-system/vendor/firmware/bcm2079x_firmware.ncd:broadcom
-system/vendor/firmware/bcm2079x_pre_firmware.ncd:broadcom
 system/bin/bridgemgrd:qcom
 system/bin/btnvtool:qcom
 system/bin/diag_klog:qcom
