@@ -141,13 +141,6 @@ lib/libstagefright_hdcp.so
 lib/libxml.so
 vendor/firmware/a300_pfp.fw
 vendor/firmware/a300_pm4.fw
-vendor/firmware/dsps.b00
-vendor/firmware/dsps.b01
-vendor/firmware/dsps.b02
-vendor/firmware/dsps.b03
-vendor/firmware/dsps.b04
-vendor/firmware/dsps.b05
-vendor/firmware/dsps.mdt
 vendor/firmware/keymaster/keymaster.b00
 vendor/firmware/keymaster/keymaster.b01
 vendor/firmware/keymaster/keymaster.b02
