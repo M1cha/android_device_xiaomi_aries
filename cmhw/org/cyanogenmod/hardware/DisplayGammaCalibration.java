@@ -26,13 +26,13 @@ import java.io.File;
 
 public class DisplayGammaCalibration {
     private static final String[] GAMMA_FILE_PATH = new String[] {
-        "/sys/devices/platform/mipi_lgit.1537/kgamma_r",
-        "/sys/devices/platform/mipi_lgit.1537/kgamma_g",
-        "/sys/devices/platform/mipi_lgit.1537/kgamma_b"
+        "/sys/devices/platform/mipi_hitachi.2049/kgamma_r",
+        "/sys/devices/platform/mipi_hitachi.2049/kgamma_g",
+        "/sys/devices/platform/mipi_hitachi.2049/kgamma_b"
     };
 
     private static final String GAMMA_FILE_CTRL =
-        "/sys/devices/platform/mipi_lgit.1537/kgamma_apply";
+        "/sys/devices/platform/mipi_hitachi.2049/kgamma_apply";
 
     private static final long SET_DELAY = 100L; /* ms */
 
@@ -43,7 +43,7 @@ public class DisplayGammaCalibration {
         }
     };
 
-    private static String[] sLastSetValues = new String[3];
+    private static String[] sLastSetValues = new String[12];
 
     public static boolean isSupported() {
         /* Barf out if the interface is absent */
@@ -52,11 +52,11 @@ public class DisplayGammaCalibration {
     }
 
     public static int getNumberOfControls() {
-        return 3;
+        return 12;
     }
 
     public static int getMaxValue(int controlIdx) {
-        return controlIdx == 2 ? 80 : 31;
+        return 255;
     }
 
     public static int getMinValue(int controlIdx) {
@@ -74,7 +74,7 @@ public class DisplayGammaCalibration {
             if (values.length() > 0) {
                 values.append(" ");
             }
-            values.append(allGammaValues[5 + control]);
+            values.append(allGammaValues[1 + control]);
         }
         return values.toString();
     }
@@ -92,10 +92,10 @@ public class DisplayGammaCalibration {
         for (int i = 0; i < 3; i++) {
             String targetFile = GAMMA_FILE_PATH[i];
             String[] allGammaValues = FileUtils.readOneLine(targetFile).split(" ");
-            allGammaValues[5 + control] = valueSplit[i];
+            allGammaValues[1 + control] = valueSplit[i];
             /* Calc the checksum */
             int checksum = 0;
-            for (int j = 1; j < 10; j++) {
+            for (int j = 1; j < 13; j++) {
                 checksum += Integer.parseInt(allGammaValues[j]);
             }
             allGammaValues[0] = String.valueOf(checksum);

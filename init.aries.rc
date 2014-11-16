@@ -264,24 +264,33 @@ on post-fs-data
     chown root system /sys/class/timed_output/vibrator/amp
     chown root system /sys/devices/platform/kcal_ctrl.0/kcal
     chown root system /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
-    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_r
-    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_g
-    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_b
-    chown root system /sys/devices/platform/mipi_lgit.1537/kgamma_apply
+    chown root system /sys/devices/platform/mipi_hitachi.2049/kgamma_r
+    chown root system /sys/devices/platform/mipi_hitachi.2049/kgamma_g
+    chown root system /sys/devices/platform/mipi_hitachi.2049/kgamma_b
+    chown root system /sys/devices/platform/mipi_hitachi.2049/kgamma_apply
+    chown root system /sys/devices/platform/mipi_hitachi.2049/cabc
+    chown root system /sys/devices/platform/mipi_hitachi.2049/ce
+    chown root system /sys/devices/i2c-3/3-004b/disable_keys
     chmod 0664 /sys/class/timed_output/vibrator/amp
     chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal
     chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
-    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_r
-    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_g
-    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_b
-    chmod 0664 /sys/devices/platform/mipi_lgit.1537/kgamma_apply
+    chmod 0664 /sys/devices/platform/mipi_hitachi.2049/kgamma_r
+    chmod 0664 /sys/devices/platform/mipi_hitachi.2049/kgamma_g
+    chmod 0664 /sys/devices/platform/mipi_hitachi.2049/kgamma_b
+    chmod 0664 /sys/devices/platform/mipi_hitachi.2049/kgamma_apply
+    chmod 0664 /sys/devices/platform/mipi_hitachi.2049/cabc
+    chmod 0664 /sys/devices/platform/mipi_hitachi.2049/ce
+    chmod 0664 /sys/devices/i2c-3/3-004b/disable_keys
     restorecon /sys/class/timed_output/vibrator/amp
     restorecon /sys/devices/platform/kcal_ctrl.0/kcal
     restorecon /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
-    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_r
-    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_g
-    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_b
-    restorecon /sys/devices/platform/mipi_lgit.1537/kgamma_apply
+    restorecon /sys/devices/platform/mipi_hitachi.2049/kgamma_r
+    restorecon /sys/devices/platform/mipi_hitachi.2049/kgamma_g
+    restorecon /sys/devices/platform/mipi_hitachi.2049/kgamma_b
+    restorecon /sys/devices/platform/mipi_hitachi.2049/kgamma_apply
+    restorecon /sys/devices/platform/mipi_hitachi.2049/cabc
+    restorecon /sys/devices/platform/mipi_hitachi.2049/ce
+    restorecon /sys/devices/i2c-3/3-004b/disable_keys
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates

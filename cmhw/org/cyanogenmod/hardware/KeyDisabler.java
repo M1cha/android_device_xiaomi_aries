@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 The CyanogenMod Project
+ * Copyright (C) 2014 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,32 +17,32 @@
 package org.cyanogenmod.hardware;
 
 import org.cyanogenmod.hardware.util.FileUtils;
+
 import java.io.File;
 
-public class VibratorHW {
+/*
+ * Disable capacitive keys
+ *
+ * This is intended for use on devices in which the capacitive keys
+ * can be fully disabled for replacement with a soft navbar. You
+ * really should not be using this on a device with mechanical or
+ * otherwise visible-when-inactive keys
+ */
 
-    private static String AMP_PATH = "/sys/class/timed_output/vibrator/amp";
+public class KeyDisabler {
+
+    private static String KEY_CONTROL_PATH = "/sys/devices/i2c-3/3-004b/disable_keys";
 
     public static boolean isSupported() {
-        return new File(AMP_PATH).exists();
+        return new File(KEY_CONTROL_PATH).exists();
     }
 
-    public static int getMaxIntensity()  {
-        return 100;
+    public static boolean isActive() {
+        return Integer.parseInt(FileUtils.readOneLine(KEY_CONTROL_PATH)) == 1;
     }
-    public static int getMinIntensity()  {
-        return 70;
+
+    public static boolean setActive(boolean state) {
+        return FileUtils.writeLine(KEY_CONTROL_PATH, state ? "1" : "0");
     }
-    public static int getWarningThreshold()  {
-        return -1;
-    }
-    public static int getCurIntensity()  {
-        return Integer.parseInt(FileUtils.readOneLine(AMP_PATH));
-    }
-    public static int getDefaultIntensity()  {
-        return 90;
-    }
-    public static boolean setIntensity(int intensity)  {
-        return FileUtils.writeLine(AMP_PATH, String.valueOf(intensity));
-    }
+
 }

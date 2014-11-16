@@ -17,13 +17,15 @@
 package org.cyanogenmod.hardware;
 
 import org.cyanogenmod.hardware.util.FileUtils;
+import java.io.File;
 
 public class DisplayColorCalibration {
     private static final String COLOR_FILE = "/sys/devices/platform/kcal_ctrl.0/kcal";
     private static final String COLOR_FILE_CTRL = "/sys/devices/platform/kcal_ctrl.0/kcal_ctrl";
 
     public static boolean isSupported() {
-        return true;
+        return new File(COLOR_FILE).exists() &&
+               new File(COLOR_FILE_CTRL).exists();
     }
 
     public static int getMaxValue()  {
