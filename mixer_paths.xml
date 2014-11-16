@@ -117,6 +117,7 @@
     <ctl name="SLIM_3_RX Channels" value="One" />
     <ctl name="HDMI_RX Channels" value="Two" />
     <ctl name="Internal BTSCO SampleRate" value="8000" />
+    <ctl name="DYN MICBIAS MUX" value="ZERO" />
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="deep-buffer-playback">
@@ -247,6 +248,19 @@
         <ctl name="DEC4 MUX" value="ADC3" />
     </path>
 
+    <path name="line">
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC5" />
+        <ctl name="DEC5 MUX" value="ADC2" />
+        <ctl name="DEC5 Volume" value="68" />
+        <ctl name="ADC2 Volume" value="0" />
+        <ctl name="DYN MICBIAS MUX" value="MB2" />
+    </path>
+
+    <path name="es310-loopback">
+        <ctl name="IIR1 INP1 MUX" value="DEC2" />
+    </path>
+
     <path name="speaker">
         <ctl name="SLIM_0_RX Channels" value="One" />
         <ctl name="RX3 MIX1 INP1" value="RX1" />
@@ -275,8 +289,7 @@
     </path>
 
     <path name="handset-mic">
-        <path name="adc1" />
-        <ctl name="DEC6 Volume" value="99" />
+        <path name="line" />
     </path>
 
     <path name="headphones">
@@ -291,8 +304,12 @@
     </path>
 
     <path name="headset-mic">
-        <path name="adc2" />
-        <ctl name="ADC2 Volume" value="2" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC5" />
+        <ctl name="DEC5 MUX" value="ADC2" />
+        <ctl name="DEC5 Volume" value="68" />
+        <ctl name="ADC2 Volume" value="0" />
+        <ctl name="DYN MICBIAS MUX" value="MB1" />
     </path>
 
     <path name="voice-handset-tmus">
@@ -304,8 +321,7 @@
     </path>
 
     <path name="voice-speaker-mic">
-        <path name="adc3" />
-        <ctl name="DEC4 Volume" value="87" />
+        <path name="line" />
     </path>
 
     <path name="voice-headphones">
@@ -313,7 +329,12 @@
     </path>
 
     <path name="voice-headset-mic">
-        <path name="headset-mic" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC5" />
+        <ctl name="DEC5 MUX" value="ADC2" />
+        <ctl name="DEC5 Volume" value="68" />
+        <ctl name="ADC5 Volume" value="0" />
+        <ctl name="DYN MICBIAS MUX" value="MB1" />
     </path>
 
     <path name="speaker-and-headphones">
@@ -335,13 +356,11 @@
     </path>
 
     <path name="voice-rec-mic">
-        <path name="adc1" />
-        <ctl name="ADC1 Volume" value="2" />
+        <path name="line" />
     </path>
 
     <path name="camcorder-mic">
-        <path name="adc1" />
-        <ctl name="DEC6 Volume" value="89" />
+        <path name="line" />
     </path>
 
     <path name="hdmi-mic">
@@ -356,15 +375,7 @@
 
     <!-- Dual MIC devices -->
     <path name="dmic-endfire">
-        <ctl name="SLIM TX7 MUX" value="DEC7" />
-        <ctl name="DEC7 MUX" value="ADC1" />
-        <ctl name="SLIM TX8 MUX" value="DEC9" />
-        <ctl name="DEC9 MUX" value="ADC3" />
-        <ctl name="SLIM_0_TX Channels" value="Two" />
-        <ctl name="RX1 MIX2 INP1" value="IIR1" />
-        <ctl name="RX2 MIX2 INP1" value="IIR1" />
-        <ctl name="IIR1 INP1 Volume" value="63" />
-        <ctl name="IIR1 INP1 MUX" value="DEC7" />
+        <path name="line" />
     </path>
 
     <path name="dmic-broadside">

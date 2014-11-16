@@ -22,6 +22,9 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chown system system /sys/kernel/debug/kgsl/proc
 
+    # Init modem
+    write /sys/module/rmnet_usb/parameters/rmnet_data_init 1
+
 on init
     # See storage config details at http://source.android.com/tech/storage/
     mkdir /storage 0775 system system
