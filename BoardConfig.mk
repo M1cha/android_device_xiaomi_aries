@@ -96,6 +96,7 @@ ifeq ($(HOST_OS),linux)
 endif
 WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
 
+RECOVERY_VARIANT := cm
 TARGET_RECOVERY_FSTAB = device/xiaomi/aries/fstab.aries
 RECOVERY_FSTAB_VERSION = 2
 TARGET_USERIMAGES_USE_EXT4 := true
