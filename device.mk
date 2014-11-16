@@ -63,6 +63,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/xiaomi/aries/init.aries.rc:root/init.aries.rc \
 	device/xiaomi/aries/init.aries.usb.rc:root/init.aries.usb.rc \
+	device/xiaomi/aries/init.recovery.aries.rc:root/init.recovery.aries.rc \
 	device/xiaomi/aries/fstab.aries:root/fstab.aries \
 	device/xiaomi/aries/ueventd.aries.rc:root/ueventd.aries.rc \
 	device/xiaomi/aries/media_profiles.xml:system/etc/media_profiles.xml \
@@ -227,6 +228,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	power.aries
+
+PRODUCT_PACKAGES += \
+	syspart_select
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so

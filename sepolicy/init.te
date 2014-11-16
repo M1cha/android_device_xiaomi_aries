@@ -1,1 +1,5 @@
 allow init self:process execmem;
+
+# syspart_select
+allow init block_device:blk_file { create unlink };
+allow init device:blk_file { create unlink };
