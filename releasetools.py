@@ -196,5 +196,5 @@ def trunc_to_null(s):
   else:
     return s
 
-def FullOTA_InstallBegin(info):
-	info.script.AppendExtra('run_program("/sbin/syspart_select", "switch");');
+#def FullOTA_InstallBegin(info):
+#	info.script.AppendExtra('run_program("/sbin/syspart_select", "switch");');
