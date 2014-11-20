@@ -36,3 +36,5 @@ allow thermald sysfs:file write;
 # Connect to mpdecision.
 allow thermald mpdecision_socket:dir r_dir_perms;
 unix_socket_connect(thermald, mpdecision, mpdecision)
+
+allow thermald self:process execmem;
