@@ -31,6 +31,8 @@
 
 #include "audio_amplifier.h"
 
+#define AUDIO_CAF 0
+
 static int mES310Fd = -1;
 static pthread_mutex_t mES310Mutex;
 static enum ES310_PathID dwOldPath = ES310_PATH_SUSPEND;
@@ -172,10 +174,11 @@ static int es310_do_route(void)
 
 	pthread_mutex_lock(&mES310Mutex);
 
-	// suspend if we don't use a mic
-	if ((in_snd_device == SND_DEVICE_NONE) &&
-	    (out_snd_device != SND_DEVICE_NONE) &&
-	    (mMode == AUDIO_MODE_NORMAL)) {
+	// original usecase: suspend if we don't use a mic
+	// if we don't use any input device codec config doesn't matter.
+	// and since we'll get NONE as device even if there are active devices
+	// we just don't do anything in this case so we're not going to select wrong routes
+	if ((in_snd_device == SND_DEVICE_NONE)) {
 		ALOGD("%s: Normal mode, RX no routing\n", __func__);
 		goto unlock;
 
@@ -193,13 +196,19 @@ static int es310_do_route(void)
 
 	if (mMode == AUDIO_MODE_IN_CALL || mMode == AUDIO_MODE_RINGTONE
 	    || mMode == AUDIO_MODE_IN_COMMUNICATION) {
+		// this needs a modification in platform.c, otherwise non-voice ucm rules will be selected
 		bool is_voip = (mMode == AUDIO_MODE_IN_COMMUNICATION);
 		switch (in_snd_device) {
 		case SND_DEVICE_IN_SPEAKER_MIC:
 		case SND_DEVICE_IN_SPEAKER_MIC_AEC:
 		case SND_DEVICE_IN_VOICE_SPEAKER_MIC:
+#if AUDIO_CAF
+		case SND_DEVICE_IN_VOICE_SPEAKER_DMIC:
+		case SND_DEVICE_IN_VOICE_SPEAKER_QMIC:
+#else
 		case SND_DEVICE_IN_VOICE_SPEAKER_DMIC_EF:
 		case SND_DEVICE_IN_VOICE_SPEAKER_DMIC_BS:
+#endif
 		case SND_DEVICE_IN_HDMI_MIC:
 			dwNewPath = ES310_PATH_HANDSFREE;
 			dwNewPreset =
@@ -221,14 +230,23 @@ static int es310_do_route(void)
 		case SND_DEVICE_IN_HANDSET_MIC:
 		case SND_DEVICE_IN_HANDSET_MIC_AEC:
 		case SND_DEVICE_IN_VOICE_TTY_VCO_HANDSET_MIC:
+#if AUDIO_CAF
+		case SND_DEVICE_IN_VOICE_DMIC:
+#else
 		case SND_DEVICE_IN_VOICE_DMIC_EF:
 		case SND_DEVICE_IN_VOICE_DMIC_BS:
 		case SND_DEVICE_IN_VOICE_DMIC_EF_TMUS:
+#endif
 		case SND_DEVICE_IN_VOICE_REC_MIC:
+#if AUDIO_CAF
+		case SND_DEVICE_IN_VOICE_REC_DMIC:
+		case SND_DEVICE_IN_VOICE_REC_DMIC_FLUENCE:
+#else
 		case SND_DEVICE_IN_VOICE_REC_DMIC_EF:
 		case SND_DEVICE_IN_VOICE_REC_DMIC_BS:
 		case SND_DEVICE_IN_VOICE_REC_DMIC_EF_FLUENCE:
 		case SND_DEVICE_IN_VOICE_REC_DMIC_BS_FLUENCE:
+#endif
 		case SND_DEVICE_IN_CAMCORDER_MIC:
 		case SND_DEVICE_IN_BT_SCO_MIC:
 		case SND_DEVICE_IN_BT_SCO_MIC_WB:
@@ -244,8 +262,13 @@ static int es310_do_route(void)
 		case SND_DEVICE_IN_SPEAKER_MIC:
 		case SND_DEVICE_IN_SPEAKER_MIC_AEC:
 		case SND_DEVICE_IN_VOICE_SPEAKER_MIC:
+#if AUDIO_CAF
+		case SND_DEVICE_IN_VOICE_SPEAKER_DMIC:
+		case SND_DEVICE_IN_VOICE_SPEAKER_QMIC:
+#else
 		case SND_DEVICE_IN_VOICE_SPEAKER_DMIC_EF:
 		case SND_DEVICE_IN_VOICE_SPEAKER_DMIC_BS:
+#endif
 		case SND_DEVICE_IN_HDMI_MIC:
 			dwNewPath = ES310_PATH_HANDSFREE;
 			dwNewPreset = ES310_PRESET_HANDSFREE_REC_WB;
@@ -269,27 +292,37 @@ static int es310_do_route(void)
 			break;
 
 		case SND_DEVICE_IN_VOICE_REC_MIC:
+#if AUDIO_CAF
+		case SND_DEVICE_IN_VOICE_REC_DMIC:
+		case SND_DEVICE_IN_VOICE_REC_DMIC_FLUENCE:
+#else
 		case SND_DEVICE_IN_VOICE_REC_DMIC_EF:
 		case SND_DEVICE_IN_VOICE_REC_DMIC_BS:
 		case SND_DEVICE_IN_VOICE_REC_DMIC_EF_FLUENCE:
 		case SND_DEVICE_IN_VOICE_REC_DMIC_BS_FLUENCE:
+#endif
 			dwNewPath = ES310_PATH_HANDSET;
 			// recognition is better this way
-			// dwNewPreset = ES310_PRESET_VOICE_RECOGNIZTION_WB;
-			dwNewPreset = ES310_PRESET_HANDSFREE_REC_WB;
+			dwNewPreset = ES310_PRESET_VOICE_RECOGNIZTION_WB;
+			//dwNewPreset = ES310_PRESET_HANDSFREE_REC_WB;
 			break;
 
-		case SND_DEVICE_IN_CAMCORDER_MIC:
-			dwNewPath = ES310_PATH_HANDSET;
-			dwNewPreset = ES310_PRESET_ANALOG_BYPASS;
-			break;
+
+			//dwNewPath = ES310_PATH_HANDSET;
+			//dwNewPreset = ES310_PRESET_ANALOG_BYPASS;
+			//break;
 
 		case SND_DEVICE_IN_HANDSET_MIC:
 		case SND_DEVICE_IN_HANDSET_MIC_AEC:
+		case SND_DEVICE_IN_CAMCORDER_MIC:
 		case SND_DEVICE_IN_VOICE_TTY_VCO_HANDSET_MIC:
+#if AUDIO_CAF
+		case SND_DEVICE_IN_VOICE_DMIC:
+#else
 		case SND_DEVICE_IN_VOICE_DMIC_EF:
 		case SND_DEVICE_IN_VOICE_DMIC_BS:
 		case SND_DEVICE_IN_VOICE_DMIC_EF_TMUS:
+#endif
 		default:
 			dwNewPath = ES310_PATH_HANDSET;
 			dwNewPreset = ES310_PRESET_HANDSFREE_REC_WB;
@@ -443,6 +476,7 @@ int amplifier_set_mode(audio_mode_t mode)
 	}
 
 	if (mMode != mode) {
+		ALOGD("%s: mode: %d->%d\n", __func__, mMode, mode);
 		mMode = mode;
 		es310_do_route();
 	}
