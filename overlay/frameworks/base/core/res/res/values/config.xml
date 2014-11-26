@@ -113,6 +113,9 @@
     <!-- Minimum screen brightness allowed by the power manager. -->
     <integer name="config_screenBrightnessDim">1</integer>
 
+    <!-- Screen brightness when dozing -->
+    <integer name="config_screenBrightnessDoze">17</integer>
+
     <!-- Default screen brightness setting.
          Must be in the range specified by minimum and maximum. -->
     <integer name="config_screenBrightnessSettingDefault">87</integer>
@@ -269,8 +272,20 @@
          config to 7. -->
     <integer name="config_deviceHardwareKeys">7</integer>
 
+    <!-- Device supports LED flashlight -->
+    <bool name="config_enableTorch">true</bool>
+
+    <!-- Does the notification LED support multiple colors?
+    Used to decide if the user can change the colors -->
+    <bool name="config_multiColorNotificationLed">true</bool>
+
+    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
+    <bool name="config_multiColorBatteryLed">true</bool>
+
     <!--  Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
+
     <!--  Whether Multiuser UI should be shown -->
     <bool name="config_enableMultiUserUI">true</bool>
+
 </resources>
